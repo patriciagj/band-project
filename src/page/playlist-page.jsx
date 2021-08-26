@@ -28,16 +28,16 @@ export const PlaylistPage = () => {
   console.log(currAlbum);
 
   const [showResults, setShowResults] = React.useState(false);
-  const onClick = () => setShowResults(true);
+  const onClick = () => setShowResults(!showResults);
 
   return (
     <div className='playlist'>
       Playlist of
       <h1>{currAlbum.title}</h1>
       <button className='btn' onClick={onClick}>
-        SEE ALL SONGS
+        {showResults ? 'HIDE SONGS' : 'SEE ALL SONGS'}
       </button>
-      {showResults && <AllSongs />}
+      {showResults && <AllSongs songs={currAlbum.songs} />}
     </div>
   );
 };
